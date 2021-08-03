@@ -2,26 +2,26 @@ package ru.netology.stats;
 
 public class StatsService {
     //1. Сумму всех продаж
-    public int calculateSumOfAllSales(int[] sales) {
-        int sum = 0;
-        for (int sale : sales) {
-            int newSum = sum + sale;
+    public long calculateSumOfAllSales(long[] sales) {
+        long sum = 0;
+        for (long sale : sales) {
+            long newSum = sum + sale;
             sum = newSum;
         }
         return sum;
     }
 
     //2. Среднюю сумму продаж в месяц
-    public int calculateAverageSalePerMonth(int[] sales) {
+    public long calculateAverageSalePerMonth(long[] sales) {
         return calculateSumOfAllSales(sales) / 12;
 
     }
 
     //3. Номер месяца,в котором был пик продаж(осуществлены продажи на максимальную сумму)*
-    public int calculateNumerOfMonthWithMaxSale(int[] sales) {
+    public long calculateNumerOfMonthWithMaxSale(long[] sales) {
         int maxMonth = 0;
         int month = 0; // переменная для индекса рассматриваемого месяца в массиве
-        for (int sale : sales) {
+        for (long sale : sales) {
             // sales[maxMonth] - продажи в месяце maxMonth
             // sale - продажи в рассматриваемом месяце
             if (sale >= sales[maxMonth]) {
@@ -33,10 +33,10 @@ public class StatsService {
     }
 
     //4. Номер месяца,в котором был минимум продаж(осуществлены продажи на минимальную сумму)*
-    public int calculatenumerOfMonthWithMinSale(int[] sales) {
+    public long calculatenumerOfMonthWithMinSale(long[] sales) {
         int minMonth = 0;
         int month = 0; // переменная для индекса рассматриваемого месяца в массиве
-        for (int sale : sales) {
+        for (long sale : sales) {
             // sales[minMonth] - продажи в месяце minMonth
             // sale - продажи в рассматриваемом месяце
             if (sale <= sales[minMonth]) {
@@ -49,10 +49,10 @@ public class StatsService {
 
 
     //5. Кол-во месяцев,в которых продажи были ниже среднего(см.п.2)
-    public int calculateNumberOfMonthesWithUnderAverageSale(int[] sales) {
-        int averageSalePerMonth = calculateSumOfAllSales(sales) / 12;
-        int numberOfMonthes = 0;
-        for (int sale : sales) {
+    public long calculateNumberOfMonthesWithUnderAverageSale(long[] sales) {
+        long averageSalePerMonth = calculateSumOfAllSales(sales) / 12;
+        long numberOfMonthes = 0;
+        for (long sale : sales) {
             int x;
             if (sale < averageSalePerMonth) {
                 x = 1;
@@ -60,7 +60,7 @@ public class StatsService {
                 x = 0;
             }
 
-            int newNumberOfMonthesWithUnderAverageSale = numberOfMonthes + x;
+            long newNumberOfMonthesWithUnderAverageSale = numberOfMonthes + x;
             numberOfMonthes = newNumberOfMonthesWithUnderAverageSale;
         }
 
@@ -68,10 +68,10 @@ public class StatsService {
     }
 
     //6. Кол-во месяцев,в которых продажи были выше среднего(см.п.2)
-    public int calculateNumberOfMonthesWithOverAverageSale(int[] sales) {
-        int averageSalePerMonth1 = calculateSumOfAllSales(sales) / 12;
-        int numberOfMonthes = 0;
-        for (int sale : sales) {
+    public long calculateNumberOfMonthesWithOverAverageSale(long[] sales) {
+        long averageSalePerMonth1 = calculateSumOfAllSales(sales) / 12;
+        long numberOfMonthes = 0;
+        for (long sale : sales) {
             int x;
             if (sale > averageSalePerMonth1) {
                 x = 1;
@@ -79,7 +79,7 @@ public class StatsService {
                 x = 0;
             }
 
-            int newNumberOfMonthesWithUnderAverageSale = numberOfMonthes + x;
+            long newNumberOfMonthesWithUnderAverageSale = numberOfMonthes + x;
             numberOfMonthes = newNumberOfMonthesWithUnderAverageSale;
         }
 
