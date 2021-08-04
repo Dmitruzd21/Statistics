@@ -7,13 +7,14 @@ public class StatsService {
         for (long sale : sales) {
             long newSum = sum + sale;
             sum = newSum;
+            //sum += sale
         }
         return sum;
     }
 
     //2. Среднюю сумму продаж в месяц
     public long calculateAverageSalePerMonth(long[] sales) {
-        return calculateSumOfAllSales(sales) / 12;
+        return calculateSumOfAllSales(sales) / sales.length;
 
     }
 
@@ -50,8 +51,8 @@ public class StatsService {
 
     //5. Кол-во месяцев,в которых продажи были ниже среднего(см.п.2)
     public long calculateNumberOfMonthesWithUnderAverageSale(long[] sales) {
-        long averageSalePerMonth = calculateSumOfAllSales(sales) / 12;
-        long numberOfMonthes = 0;
+        long averageSalePerMonth = calculateAverageSalePerMonth(sales);
+        long monthCount = 0;
         for (long sale : sales) {
             int x;
             if (sale < averageSalePerMonth) {
@@ -60,17 +61,26 @@ public class StatsService {
                 x = 0;
             }
 
-            long newNumberOfMonthesWithUnderAverageSale = numberOfMonthes + x;
-            numberOfMonthes = newNumberOfMonthesWithUnderAverageSale;
+            long newNumberOfMonthesWithUnderAverageSale = monthCount + x;
+            monthCount = newNumberOfMonthesWithUnderAverageSale;
         }
 
-        return numberOfMonthes;
+        return monthCount;
     }
+
+    /// for (long sale : sales) {
+    //            if (sale < averageSalePerMonth) {
+    //              monthCount++;
+    //            }
+    //        }
+    //
+    //        return monthCount;
+    //    }
 
     //6. Кол-во месяцев,в которых продажи были выше среднего(см.п.2)
     public long calculateNumberOfMonthesWithOverAverageSale(long[] sales) {
-        long averageSalePerMonth1 = calculateSumOfAllSales(sales) / 12;
-        long numberOfMonthes = 0;
+        long averageSalePerMonth1 = calculateAverageSalePerMonth(sales);
+        long monthCount = 0;
         for (long sale : sales) {
             int x;
             if (sale > averageSalePerMonth1) {
@@ -79,12 +89,21 @@ public class StatsService {
                 x = 0;
             }
 
-            long newNumberOfMonthesWithUnderAverageSale = numberOfMonthes + x;
-            numberOfMonthes = newNumberOfMonthesWithUnderAverageSale;
+            long newNumberOfMonthesWithUnderAverageSale = monthCount + x;
+            monthCount = newNumberOfMonthesWithUnderAverageSale;
         }
 
-        return numberOfMonthes;
+        return monthCount;
 
     }
+    /// for (long sale : sales) {
+    //            if (sale > averageSalePerMonth) {
+    //              monthCount++;
+    //            }
+    //        }
+    //
+    //        return monthCount;
+    //    }
 
 }
+
