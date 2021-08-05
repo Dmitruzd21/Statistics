@@ -54,56 +54,52 @@ public class StatsService {
         long averageSalePerMonth = calculateAverageSalePerMonth(sales);
         long monthCount = 0;
         for (long sale : sales) {
-            int x;
             if (sale < averageSalePerMonth) {
-                x = 1;
-            } else {
-                x = 0;
+                monthCount++;
             }
-
-            long newNumberOfMonthesWithUnderAverageSale = monthCount + x;
-            monthCount = newNumberOfMonthesWithUnderAverageSale;
         }
-
         return monthCount;
     }
 
-    /// for (long sale : sales) {
-    //            if (sale < averageSalePerMonth) {
-    //              monthCount++;
-    //            }
-    //        }
-    //
-    //        return monthCount;
+    // for (long sale : sales) {
+    //    int x;
+    //    if (sale < averageSalePerMonth) {
+    //       x = 1;
+    //   } else {
+    //        x = 0;
     //    }
+    //     long newNumberOfMonthesWithUnderAverageSale = monthCount + x;
+    //     monthCount = newNumberOfMonthesWithUnderAverageSale;
+    // }
+    //   return monthCount;
+    // }
+
 
     //6. Кол-во месяцев,в которых продажи были выше среднего(см.п.2)
     public long calculateNumberOfMonthesWithOverAverageSale(long[] sales) {
         long averageSalePerMonth1 = calculateAverageSalePerMonth(sales);
         long monthCount = 0;
         for (long sale : sales) {
-            int x;
             if (sale > averageSalePerMonth1) {
-                x = 1;
-            } else {
-                x = 0;
+                monthCount++;
             }
-
-            long newNumberOfMonthesWithUnderAverageSale = monthCount + x;
-            monthCount = newNumberOfMonthesWithUnderAverageSale;
         }
-
         return monthCount;
-
     }
-    /// for (long sale : sales) {
-    //            if (sale > averageSalePerMonth) {
-    //              monthCount++;
-    //            }
-    //        }
-    //
-    //        return monthCount;
-    //    }
+
+
+    //for (long sale : sales) {
+    //    int x;
+    //   if (sale > averageSalePerMonth1) {
+    //       x = 1;
+    //   } else {
+    //      x = 0;
+    //   }
+    //   long newNumberOfMonthesWithUnderAverageSale = monthCount + x;
+    //   monthCount = newNumberOfMonthesWithUnderAverageSale;
+    // }
+    //  return monthCount;
+    //}
 
 }
 
